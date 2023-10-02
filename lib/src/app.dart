@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:memlearn/src/auth/view/auth_page.dart';
 import 'package:memlearn/src/home/view/home_page.dart';
 import 'package:memlearn/src/splash/view/splash_page.dart';
+import 'package:memlearn/src/theme_data.dart';
 
 class MemLearn extends StatelessWidget {
   const MemLearn({
@@ -26,10 +27,7 @@ class MemLearn extends StatelessWidget {
       ],
       onGenerateTitle: (BuildContext context) =>
           AppLocalizations.of(context)!.appTitle,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: memlearnTheme(),
       onGenerateRoute: (RouteSettings routeSettings) {
         return MaterialPageRoute<void>(
           settings: routeSettings,

@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:memlearn/src/auth/service/auth_repo.dart';
 import 'package:memlearn/src/home/view/home_page.dart';
+import 'package:memlearn/src/utils/theme_constants.dart';
 import 'package:neopop/widgets/buttons/neopop_button/neopop_button.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -61,22 +62,10 @@ class _AuthPageState extends State<AuthPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const Text(
-                  'Memlearn',
-                  style: TextStyle(
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.green,
-                  ),
-                ),
-                const Text(
-                  'A new way to learn',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.green,
-                  ),
-                ),
+                Text('Memlearn',
+                    style: Theme.of(context).textTheme.displayMedium),
+                Text('A new way to learn',
+                    style: Theme.of(context).textTheme.displaySmall),
                 const SizedBox(height: 50),
                 TextField(
                   controller: _emailController,
@@ -93,7 +82,7 @@ class _AuthPageState extends State<AuthPage> {
                 ),
                 const SizedBox(height: 20),
                 NeoPopButton(
-                  color: Colors.white70,
+                  color: AppColorTheme.kColorNotWhite,
                   onTapUp: () async {
                     HapticFeedback.vibrate();
                     if (_isLogin) {
@@ -115,7 +104,11 @@ class _AuthPageState extends State<AuthPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(_isLogin ? ' Sign in' : ' Sign up'),
+                        Text(_isLogin ? ' Sign in' : ' Sign up',
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge!
+                                .copyWith(color: AppColorTheme.kColorNotBlack)),
                       ],
                     ),
                   ),
@@ -123,7 +116,12 @@ class _AuthPageState extends State<AuthPage> {
                 const SizedBox(height: 20),
                 TextButton(
                   child: Text(
-                      _isLogin ? 'Switch to Sign up' : 'Switch to Sign in'),
+                    _isLogin ? 'Switch to Sign up' : 'Switch to Sign in',
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelMedium!
+                        .copyWith(color: AppColorTheme.kColorNotBlack),
+                  ),
                   onPressed: () {
                     setState(() {
                       _isLogin = !_isLogin;
