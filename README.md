@@ -23,7 +23,7 @@ A decentralised learning protocol built on Solana, aimed at gamifying the progra
 Join our beta to be a co-creator in shaping the future of learning. [Join Beta](https://memlearn.xyz)
 
 ## Community
-- [Twitter](https://twitter.com)
+- [Twitter](https://twitter.com/memlearn)
 - [Email](mailto:getmemlearn@gmail.com)
 
 ## License
