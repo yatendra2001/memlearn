@@ -17,15 +17,15 @@ dependencies:
 
   flutter_bloc: ^8.1.3
   flutter_dotenv: ^5.1.0
-  flutter_screenutil: ^5.9.0
   solana: ^0.30.0
   solana_mobile_client: ^0.1.1
   supabase_flutter: ^1.10.19
   walletconnect_flutter_v2: ^2.1.4
   webcrypto: ^0.5.3
-  welltested: ^2.1.3
   neopop: ^1.0.2
   cached_network_image: ^3.3.0
+  lottie: ^2.6.0
+  sizer: ^2.0.15
 
 dev_dependencies:
   flutter_test:
@@ -43,4 +43,30 @@ flutter:
   assets:
     # Add assets from the images directory to the application.
     - assets/images/
+    - assets/animations/
     - .env
+
+  fonts:
+    - family: Roboto-Regular
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+    - family: Gilroy
+      fonts:
+        - asset: assets/fonts/Gilroy-Ultralight.ttf
+          weight: 100
+        - asset: assets/fonts/Gilroy-Thin.ttf
+          weight: 200
+        - asset: assets/fonts/Gilroy-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Gilroy-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Gilroy-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Gilroy-Semibold.ttf
+          weight: 600
+        - asset: assets/fonts/Gilroy-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Gilroy-Heavy.ttf
+          weight: 800
+        - asset: assets/fonts/Gilroy-Black.ttf
+          weight: 900

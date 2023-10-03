@@ -1,13 +1,12 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:memlearn/src/auth/service/auth_repo.dart';
 import 'package:memlearn/src/home/view/home_page.dart';
 import 'package:memlearn/src/utils/theme_constants.dart';
 import 'package:neopop/widgets/buttons/neopop_button/neopop_button.dart';
+import 'package:sizer/sizer.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthPage extends StatefulWidget {
@@ -32,14 +31,16 @@ class _AuthPageState extends State<AuthPage> {
 
   @override
   void initState() {
-    _authStateSubscription = supabase.auth.onAuthStateChange.listen((data) {
-      if (_redirecting) return;
-      final session = data.session;
-      if (session != null) {
-        _redirecting = true;
-        Navigator.of(context).pushReplacementNamed(HomePage.routeName);
-      }
-    });
+    _authStateSubscription = supabase.auth.onAuthStateChange.listen(
+      (data) {
+        if (_redirecting) return;
+        final session = data.session;
+        if (session != null) {
+          _redirecting = true;
+          Navigator.of(context).pushReplacementNamed(HomePage.routeName);
+        }
+      },
+    );
     super.initState();
   }
 
@@ -53,84 +54,119 @@ class _AuthPageState extends State<AuthPage> {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      builder: (context, child) => Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text('Memlearn',
-                    style: Theme.of(context).textTheme.displayMedium),
-                Text('A new way to learn',
-                    style: Theme.of(context).textTheme.displaySmall),
-                const SizedBox(height: 50),
-                TextField(
-                  controller: _emailController,
-                  decoration: const InputDecoration(
-                    labelText: 'Email',
-                  ),
-                ),
-                TextField(
-                  controller: _passwordController,
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                    labelText: 'Password',
-                  ),
-                ),
-                const SizedBox(height: 20),
-                NeoPopButton(
-                  color: AppColorTheme.kColorNotWhite,
-                  onTapUp: () async {
-                    HapticFeedback.vibrate();
-                    if (_isLogin) {
-                      await authRepo.signInWithEmailPassword(
-                          email: _emailController.text,
-                          password: _passwordController.text);
-                      authRepo.createAndUploadKeypair(
-                          email: _emailController.text);
-                    } else {
-                      await authRepo.signUpWithEmailPassword(
-                        email: _emailController.text,
-                        password: _passwordController.text,
-                      );
-                    }
-                  },
-                  onTapDown: () => HapticFeedback.vibrate(),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 15),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(_isLogin ? ' Sign in' : ' Sign up',
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelLarge!
-                                .copyWith(color: AppColorTheme.kColorNotBlack)),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                TextButton(
-                  child: Text(
-                    _isLogin ? 'Switch to Sign up' : 'Switch to Sign in',
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelMedium!
-                        .copyWith(color: AppColorTheme.kColorNotBlack),
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      _isLogin = !_isLogin;
-                    });
-                  },
-                ),
-              ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              _isLogin ? ' Log in' : ' Sign up',
+              style: TextStyle(
+                  color: AppColorTheme.kColorWhiteText,
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w600),
             ),
-          ),
+            SizedBox(height: 4.h),
+            TextField(
+              controller: _emailController,
+              cursorColor: AppColorTheme.kColorWhiteText,
+              style: TextStyle(
+                  color: AppColorTheme.kColorWhiteText,
+                  fontWeight: FontWeight.w600),
+              decoration: InputDecoration(
+                hintText: 'Email',
+                hintStyle: TextStyle(
+                    color: AppColorTheme.kColorWhiteText,
+                    fontWeight: FontWeight.w500),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(0),
+                  borderSide: BorderSide(color: AppColorTheme.kColorNotWhite),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(0),
+                  borderSide: BorderSide(
+                    color: AppColorTheme.kColorNotWhite,
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 1.h),
+            TextField(
+              controller: _passwordController,
+              obscureText: true,
+              cursorColor: AppColorTheme.kColorWhiteText,
+              style: TextStyle(
+                  color: AppColorTheme.kColorWhiteText,
+                  fontWeight: FontWeight.w600),
+              decoration: InputDecoration(
+                hintText: 'Password',
+                hintStyle: TextStyle(
+                    color: AppColorTheme.kColorWhiteText,
+                    fontWeight: FontWeight.w500),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(0),
+                  borderSide: BorderSide(color: AppColorTheme.kColorNotWhite),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(0),
+                  borderSide: BorderSide(color: AppColorTheme.kColorNotWhite),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            NeoPopButton(
+              color: AppColorTheme.kColorWhiteText,
+              onTapUp: () async {
+                HapticFeedback.vibrate();
+                // if (_isLogin) {
+                //   await authRepo.signInWithEmailPassword(
+                //       email: _emailController.text,
+                //       password: _passwordController.text);
+                //   authRepo.createAndUploadKeypair(
+                //       email: _emailController.text);
+                // } else {
+                //   await authRepo.signUpWithEmailPassword(
+                //     email: _emailController.text,
+                //     password: _passwordController.text,
+                //   );
+                // }
+              },
+              onTapDown: () => HapticFeedback.vibrate(),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      _isLogin ? 'Log in' : 'Sign up',
+                      style: TextStyle(
+                          color: AppColorTheme.kColorNotBlack,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            TextButton(
+              child: Text(
+                _isLogin ? 'Switch to Sign up' : 'Switch to Sign in',
+                style: TextStyle(
+                    color: AppColorTheme.kColorWhiteText,
+                    fontSize: 11.sp,
+                    fontWeight: FontWeight.w600),
+              ),
+              onPressed: () {
+                setState(
+                  () {
+                    _isLogin = !_isLogin;
+                  },
+                );
+              },
+            ),
+          ],
         ),
       ),
     );

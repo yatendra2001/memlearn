@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:memlearn/src/auth/view/auth_page.dart';
+import 'package:memlearn/src/auth/view/welcome_page.dart';
 import 'package:memlearn/src/home/view/home_page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -27,7 +27,7 @@ class _SplashPageState extends State<SplashPage> {
     if (session != null) {
       Navigator.of(context).pushReplacementNamed(HomePage.routeName);
     } else {
-      Navigator.of(context).pushReplacementNamed(AuthPage.routeName);
+      Navigator.of(context).pushReplacementNamed(WelcomePage.routeName);
     }
   }
 

@@ -4,8 +4,7 @@ import 'package:memlearn/src/utils/theme_constants.dart';
 ThemeData memlearnTheme() {
   return ThemeData(
     brightness: Brightness.dark,
-    primaryColor:
-        Colors.deepPurple, // A deep purple color often associated with CRED
+    primaryColor: Colors.deepPurple,
     scaffoldBackgroundColor:
         AppColorTheme.kColorNotBlack, // Dark background color
     cardColor: AppColorTheme
