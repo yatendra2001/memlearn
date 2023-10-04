@@ -3,9 +3,8 @@ import 'package:memlearn/src/utils/theme_constants.dart';
 import 'package:memlearn/src/widgets/pop_button.dart';
 import 'package:sizer/sizer.dart';
 
-class HomePage extends StatelessWidget {
-  static const routeName = '/home-page';
-  const HomePage({super.key});
+class PathsPage extends StatelessWidget {
+  const PathsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,30 +36,39 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 25.h,
               child: ListView(
-                children: [
+                scrollDirection: Axis.horizontal,
+                children: const [
+                  Card(
+                    child: Placeholder(),
+                  ),
+                  Card(
+                    child: Placeholder(),
+                  ),
+                  Card(
+                    child: Placeholder(),
+                  ),
+                  Card(
+                    child: Placeholder(),
+                  ),
                   Card(
                     child: Placeholder(),
                   )
                 ],
-                scrollDirection: Axis.horizontal,
               ),
             ),
             PopButton(
-              size: 25,
-              color: AppColorTheme.kColorNotWhite,
+              size: 0.sp,
+              radius: 100,
+              color: Colors.green,
               onPressed: () {
                 // Navigator.of(context).pop();
               },
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 1.h, horizontal: 20.w),
-                child: Text(
-                  "X",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: AppColorTheme.kColorNotBlack,
-                    fontSize: 18,
-                    fontFamily: 'Gameplay',
-                  ),
+                padding: const EdgeInsets.all(16.0),
+                child: Icon(
+                  Icons.star,
+                  color: AppColorTheme.kColorNotWhite,
+                  size: 35.sp,
                 ),
               ),
             ),

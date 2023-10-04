@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:memlearn/src/auth/view/auth_page.dart';
 import 'package:memlearn/src/utils/asset_constants.dart';
 import 'package:memlearn/src/utils/theme_constants.dart';
+import 'package:memlearn/src/widgets/pop_button.dart';
 import 'package:neopop/widgets/buttons/neopop_tilted_button/neopop_tilted_button.dart';
 import 'package:sizer/sizer.dart';
 
@@ -48,7 +49,7 @@ class WelcomePage extends StatelessWidget {
                 fontSize: 11.sp,
               ),
             ),
-            SizedBox(height: 4.h),
+            SizedBox(height: 5.h),
             NeoPopTiltedButton(
               onTapUp: () {
                 HapticFeedback.vibrate();

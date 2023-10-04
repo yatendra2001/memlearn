@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:memlearn/src/auth/service/auth_repo.dart';
 import 'package:memlearn/src/home/view/home_page.dart';
 import 'package:memlearn/src/utils/theme_constants.dart';
+import 'package:memlearn/src/widgets/pop_button.dart';
 import 'package:neopop/widgets/buttons/neopop_button/neopop_button.dart';
 import 'package:sizer/sizer.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -80,11 +81,11 @@ class _AuthPageState extends State<AuthPage> {
                     color: AppColorTheme.kColorWhiteText,
                     fontWeight: FontWeight.w500),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(0),
+                  borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(color: AppColorTheme.kColorNotWhite),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(0),
+                  borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(
                     color: AppColorTheme.kColorNotWhite,
                   ),
@@ -105,19 +106,20 @@ class _AuthPageState extends State<AuthPage> {
                     color: AppColorTheme.kColorWhiteText,
                     fontWeight: FontWeight.w500),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(0),
+                  borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(color: AppColorTheme.kColorNotWhite),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(0),
+                  borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide(color: AppColorTheme.kColorNotWhite),
                 ),
               ),
             ),
             const SizedBox(height: 20),
-            NeoPopButton(
-              color: AppColorTheme.kColorWhiteText,
-              onTapUp: () async {
+            PopButton(
+              size: 10.sp,
+              color: AppColorTheme.kColorNotWhite,
+              onPressed: () async {
                 HapticFeedback.vibrate();
                 if (_isLogin) {
                   await authRepo.signInWithEmailPassword(
@@ -131,14 +133,13 @@ class _AuthPageState extends State<AuthPage> {
                   );
                 }
               },
-              onTapDown: () => HapticFeedback.vibrate(),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 15),
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 33.w),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      _isLogin ? 'Log in' : 'Sign up',
+                      "continue →",
                       style: TextStyle(
                           color: AppColorTheme.kColorNotBlack,
                           fontSize: 12.sp,

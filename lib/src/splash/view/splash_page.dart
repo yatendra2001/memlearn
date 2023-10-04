@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:memlearn/src/auth/view/welcome_page.dart';
-import 'package:memlearn/src/home/view/home_page.dart';
+import 'package:memlearn/src/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SplashPage extends StatefulWidget {
@@ -25,7 +25,7 @@ class _SplashPageState extends State<SplashPage> {
 
     final session = Supabase.instance.client.auth.currentSession;
     if (session != null) {
-      Navigator.of(context).pushReplacementNamed(HomePage.routeName);
+      Navigator.of(context).pushReplacementNamed(BottomNavBar.routeName);
     } else {
       Navigator.of(context).pushReplacementNamed(WelcomePage.routeName);
     }

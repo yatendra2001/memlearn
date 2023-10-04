@@ -5,6 +5,7 @@ class PopButton extends StatefulWidget {
     Key? key,
     required this.child,
     required this.size,
+    this.radius,
     required this.color,
     this.duration = const Duration(milliseconds: 160),
     required this.onPressed,
@@ -14,6 +15,7 @@ class PopButton extends StatefulWidget {
   final Color color;
   final Duration duration;
   final VoidCallback onPressed;
+  final double? radius;
 
   final double size;
 
@@ -27,14 +29,11 @@ class _PopButtonState extends State<PopButton> with TickerProviderStateMixin {
 
   late TickerFuture _downTicker;
 
-  double get buttonDepth => widget.size * 0.2;
+  double get buttonDepth => widget.size * 0.4;
 
   void _setupAnimation() {
-    if (_animationController != null) {
-      _animationController.stop();
-      final oldControllerValue = _animationController.value ?? 0.0;
-      _animationController.dispose();
-    }
+    _animationController.stop();
+    _animationController.dispose();
     _animationController = AnimationController(
       duration: Duration(microseconds: widget.duration.inMicroseconds ~/ 2),
       vsync: this,
@@ -75,36 +74,28 @@ class _PopButtonState extends State<PopButton> with TickerProviderStateMixin {
   }
 
   void _onTapDown(_) {
-    if (widget.onPressed != null) {
-      _downTicker = _animationController.animateTo(1.0);
-    }
+    _downTicker = _animationController.animateTo(1.0);
   }
 
   void _onTapUp(_) {
-    if (widget.onPressed != null) {
-      _downTicker.whenComplete(() {
-        _animationController.animateTo(0.0);
-        widget.onPressed?.call();
-      });
-    }
+    _downTicker.whenComplete(() {
+      _animationController.animateTo(0.0);
+      widget.onPressed.call();
+    });
   }
 
   void _onTapCancel() {
-    if (widget.onPressed != null) {
-      _animationController.reset();
-    }
+    _animationController.reset();
   }
 
   @override
   Widget build(BuildContext context) {
     final vertPadding = widget.size * 0.25;
     final horzPadding = widget.size * 0.50;
-    final radius = BorderRadius.circular(horzPadding * 0.5);
+    final radius = BorderRadius.circular(widget.radius ?? horzPadding * 0.5);
 
     return Container(
-      padding: widget.onPressed != null
-          ? const EdgeInsets.only(bottom: 2, left: 0.5, right: 0.5)
-          : null,
+      padding: const EdgeInsets.only(bottom: 2, left: 0.5, right: 0.5),
       decoration: BoxDecoration(
         color: Colors.black87,
         borderRadius: radius,
@@ -184,19 +175,3 @@ class _PopButtonState extends State<PopButton> with TickerProviderStateMixin {
     return HSLColor.fromAHSL(hslColor.alpha, h, s, l).toColor();
   }
 }
-
-// USAGE - Fancy Button
-
-// Simple Text - Non Clickable
-
-// PopButton(
-//     child: Text(
-//        "Your Amazing Text",
-//        style: Utils.textStyle(18.0),
-//        ),
-//     size: 18,
-//     color: const Color(0xFFCA3034),
-// ),
-
-// Complex Button - Clickable
-
