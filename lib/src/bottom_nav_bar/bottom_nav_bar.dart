@@ -60,27 +60,47 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 color: AppColorTheme.kColorGrey, // unselected icon color
                 activeColor: AppColorTheme
                     .kColorNotWhite, // selected icon and text color
-                iconSize: 14.sp, // tab button icon size
+                iconSize: 12.sp, // tab button icon size
                 tabBackgroundColor:
                     AppColorTheme.kColorGrey, // selected tab background color
                 padding: EdgeInsets.symmetric(
-                    horizontal: 20, vertical: 1.5.h), // navigation bar padding
-                tabs: const [
+                    horizontal: 16, vertical: 1.8.h), // navigation bar padding
+                tabs: [
                   GButton(
                     icon: FontAwesomeIcons.house,
                     text: 'Home',
+                    onPressed: () {
+                      setState(() {
+                        _selectedIndex = 0;
+                      });
+                    },
                   ),
                   GButton(
                     icon: FontAwesomeIcons.coins,
                     text: 'Quests',
+                    onPressed: () {
+                      setState(() {
+                        _selectedIndex = 1;
+                      });
+                    },
                   ),
                   GButton(
                     icon: FontAwesomeIcons.map,
                     text: 'Paths',
+                    onPressed: () {
+                      setState(() {
+                        _selectedIndex = 2;
+                      });
+                    },
                   ),
                   GButton(
                     icon: FontAwesomeIcons.user,
                     text: 'Profile',
+                    onPressed: () {
+                      setState(() {
+                        _selectedIndex = 3;
+                      });
+                    },
                   )
                 ]),
           ),
