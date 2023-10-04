@@ -91,7 +91,7 @@ class _AuthPageState extends State<AuthPage> {
                 ),
               ),
             ),
-            SizedBox(height: 1.h),
+            SizedBox(height: 2.h),
             TextField(
               controller: _passwordController,
               obscureText: true,
@@ -119,18 +119,17 @@ class _AuthPageState extends State<AuthPage> {
               color: AppColorTheme.kColorWhiteText,
               onTapUp: () async {
                 HapticFeedback.vibrate();
-                // if (_isLogin) {
-                //   await authRepo.signInWithEmailPassword(
-                //       email: _emailController.text,
-                //       password: _passwordController.text);
-                //   authRepo.createAndUploadKeypair(
-                //       email: _emailController.text);
-                // } else {
-                //   await authRepo.signUpWithEmailPassword(
-                //     email: _emailController.text,
-                //     password: _passwordController.text,
-                //   );
-                // }
+                if (_isLogin) {
+                  await authRepo.signInWithEmailPassword(
+                      email: _emailController.text,
+                      password: _passwordController.text);
+                  authRepo.createAndUploadKeypair(email: _emailController.text);
+                } else {
+                  await authRepo.signUpWithEmailPassword(
+                    email: _emailController.text,
+                    password: _passwordController.text,
+                  );
+                }
               },
               onTapDown: () => HapticFeedback.vibrate(),
               child: Padding(
