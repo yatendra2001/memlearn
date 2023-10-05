@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:memlearn/src/utils/theme_constants.dart';
+import 'package:memcode/src/utils/theme_constants.dart';
 
-ThemeData memlearnTheme() {
+ThemeData memcodeTheme() {
   return ThemeData(
     brightness: Brightness.dark,
     primaryColor: Colors.deepPurple,

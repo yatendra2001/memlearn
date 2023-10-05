@@ -1,6 +1,6 @@
 {
-    "name": "memlearn",
-    "short_name": "memlearn",
+    "name": "memcode",
+    "short_name": "memcode",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -2,11 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:memlearn/src/auth/service/auth_repo.dart';
-import 'package:memlearn/src/home/view/home_page.dart';
-import 'package:memlearn/src/utils/theme_constants.dart';
-import 'package:memlearn/src/widgets/pop_button.dart';
-import 'package:neopop/widgets/buttons/neopop_button/neopop_button.dart';
+import 'package:memcode/src/auth/service/auth_repo.dart';
+import 'package:memcode/src/home/view/home_page.dart';
+import 'package:memcode/src/utils/theme_constants.dart';
+import 'package:memcode/src/widgets/pop_button.dart';
 import 'package:sizer/sizer.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 

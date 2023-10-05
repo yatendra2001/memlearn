@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
-import 'package:memlearn/src/auth/view/auth_page.dart';
-import 'package:memlearn/src/utils/asset_constants.dart';
-import 'package:memlearn/src/utils/theme_constants.dart';
-import 'package:memlearn/src/widgets/pop_button.dart';
+import 'package:memcode/src/auth/view/auth_page.dart';
+import 'package:memcode/src/utils/asset_constants.dart';
+import 'package:memcode/src/utils/theme_constants.dart';
 import 'package:neopop/widgets/buttons/neopop_tilted_button/neopop_tilted_button.dart';
 import 'package:sizer/sizer.dart';
 

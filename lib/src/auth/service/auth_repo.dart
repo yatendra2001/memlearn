@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:memlearn/src/auth/service/base_auth_repo.dart';
+import 'package:memcode/src/auth/service/base_auth_repo.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthRepo extends BaseAuthRepo {

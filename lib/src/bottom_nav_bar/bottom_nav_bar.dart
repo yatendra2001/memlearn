@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:memlearn/src/home/view/home_page.dart';
-import 'package:memlearn/src/paths/view/paths_page.dart';
-import 'package:memlearn/src/profile/view/profile_page.dart';
-import 'package:memlearn/src/quest/view/quest_page.dart';
-import 'package:memlearn/src/utils/theme_constants.dart';
+import 'package:memcode/src/home/view/home_page.dart';
+import 'package:memcode/src/paths/view/paths_page.dart';
+import 'package:memcode/src/profile/view/profile_page.dart';
+import 'package:memcode/src/quest/view/quest_page.dart';
+import 'package:memcode/src/utils/theme_constants.dart';
 
 import 'package:sizer/sizer.dart';
 

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:memlearn/src/auth/view/auth_page.dart';
-import 'package:memlearn/src/auth/view/welcome_page.dart';
-import 'package:memlearn/src/bottom_nav_bar/bottom_nav_bar.dart';
-import 'package:memlearn/src/splash/view/splash_page.dart';
-import 'package:memlearn/src/theme_data.dart';
+import 'package:memcode/src/auth/view/auth_page.dart';
+import 'package:memcode/src/auth/view/welcome_page.dart';
+import 'package:memcode/src/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:memcode/src/splash/view/splash_page.dart';
+import 'package:memcode/src/theme_data.dart';
 import 'package:sizer/sizer.dart';
 
-class MemLearn extends StatelessWidget {
-  const MemLearn({
+class Memcode extends StatelessWidget {
+  const Memcode({
     super.key,
   });
 
@@ -30,7 +30,8 @@ class MemLearn extends StatelessWidget {
         ],
         onGenerateTitle: (BuildContext context) =>
             AppLocalizations.of(context)!.appTitle,
-        theme: memlearnTheme(),
+        theme: memcodeTheme(),
+        themeMode: ThemeMode.dark,
         onGenerateRoute: (RouteSettings routeSettings) {
           return MaterialPageRoute<void>(
             settings: routeSettings,

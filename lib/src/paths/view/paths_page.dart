@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:memlearn/src/utils/theme_constants.dart';
-import 'package:memlearn/src/widgets/pop_button.dart';
+import 'package:memcode/src/utils/theme_constants.dart';
+import 'package:memcode/src/widgets/pop_button.dart';
 import 'package:sizer/sizer.dart';
 
 class PathsPage extends StatelessWidget {
@@ -57,7 +57,7 @@ class PathsPage extends StatelessWidget {
               ),
             ),
             PopButton(
-              size: 0.sp,
+              size: 5.sp,
               radius: 100,
               color: Colors.green,
               onPressed: () {

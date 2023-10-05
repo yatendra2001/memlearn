@@ -1,4 +1,4 @@
-name: memlearn
+name: memcode
 description: A new Flutter project.
 
 # Prevent accidental publishing to pub.dev.
@@ -28,6 +28,7 @@ dependencies:
   sizer: ^2.0.15
   google_nav_bar: ^5.0.6
   font_awesome_flutter: ^10.5.0
+  shake_flutter: ^16.2.0
 
 dev_dependencies:
   flutter_test:

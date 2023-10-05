@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:shake_flutter/shake_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'src/app.dart';
@@ -10,5 +11,5 @@ void main() async {
   await Supabase.initialize(
       url: dotenv.env['supabaseUrl']!, anonKey: dotenv.env['supabaseKey']!);
 
-  runApp(const MemLearn());
+  runApp(const Memcode());
 }

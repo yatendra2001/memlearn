@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.superawesomeapps" "\0"
-            VALUE "FileDescription", "memlearn" "\0"
+            VALUE "FileDescription", "memcode" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "memlearn" "\0"
+            VALUE "InternalName", "memcode" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.superawesomeapps. All rights reserved." "\0"
-            VALUE "OriginalFilename", "memlearn.exe" "\0"
-            VALUE "ProductName", "memlearn" "\0"
+            VALUE "OriginalFilename", "memcode.exe" "\0"
+            VALUE "ProductName", "memcode" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

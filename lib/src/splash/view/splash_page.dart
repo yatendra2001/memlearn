@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:memlearn/src/auth/view/welcome_page.dart';
-import 'package:memlearn/src/bottom_nav_bar/bottom_nav_bar.dart';
+import 'package:memcode/src/auth/view/welcome_page.dart';
+import 'package:memcode/src/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class SplashPage extends StatefulWidget {
