@@ -36,7 +36,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: Container(
-          height: 9.h,
+          height: 10.h,
           width: double.infinity,
           decoration: BoxDecoration(
             color: AppColorTheme.kColorNotBlack,
@@ -45,7 +45,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.only(bottom: 2.h, left: 3.w, right: 3.w),
+            padding:
+                EdgeInsets.only(top: 2.h, bottom: 2.h, left: 3.w, right: 3.w),
             child: GNav(
                 rippleColor: AppColorTheme
                     .kColorGrey, // tab button ripple color when pressed

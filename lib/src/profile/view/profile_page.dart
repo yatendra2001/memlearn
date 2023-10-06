@@ -3,7 +3,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:memcode/src/auth/view/welcome_page.dart';
 import 'package:memcode/src/utils/asset_constants.dart';
 import 'package:memcode/src/utils/theme_constants.dart';
-import 'package:shake_flutter/models/shake_theme.dart';
 import 'package:shake_flutter/shake_flutter.dart';
 import 'package:sizer/sizer.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -18,9 +17,8 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
-    Shake.setUserFeedbackEnabled(false);
+    Shake.setUserFeedbackEnabled(true);
     Shake.setInvokeShakeOnShakeDeviceEvent(true);
-    Shake.setAutoVideoRecording(true);
 
     Shake.start(dotenv.env['shakeClientId']!, dotenv.env['shakeClientSecret']!);
 

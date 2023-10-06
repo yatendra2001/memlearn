@@ -18,7 +18,7 @@ class WelcomePage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            SizedBox(height: 10.h),
+            SizedBox(height: 8.h),
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Image.asset(
@@ -54,7 +54,11 @@ class WelcomePage extends StatelessWidget {
                 HapticFeedback.vibrate();
                 showModalBottomSheet(
                   context: context,
-                  builder: (context) => const AuthPage(),
+                  builder: (context) => Padding(
+                    padding: EdgeInsets.only(
+                        bottom: MediaQuery.of(context).viewInsets.bottom),
+                    child: const AuthPage(),
+                  ),
                   backgroundColor: AppColorTheme.kColorNotBlack,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
@@ -62,6 +66,8 @@ class WelcomePage extends StatelessWidget {
                       topRight: Radius.circular(20),
                     ),
                   ),
+                  isScrollControlled: true,
+                  useRootNavigator: true,
                 );
               },
               onTapDown: () => HapticFeedback.vibrate(),

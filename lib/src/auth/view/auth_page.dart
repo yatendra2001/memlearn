@@ -54,118 +54,124 @@ class _AuthPageState extends State<AuthPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              _isLogin ? ' Log in' : ' Sign up',
-              style: TextStyle(
-                  color: AppColorTheme.kColorWhiteText,
-                  fontSize: 24.sp,
-                  fontWeight: FontWeight.w600),
-            ),
-            SizedBox(height: 4.h),
-            TextField(
-              controller: _emailController,
-              cursorColor: AppColorTheme.kColorWhiteText,
-              style: TextStyle(
-                  color: AppColorTheme.kColorWhiteText,
-                  fontWeight: FontWeight.w600),
-              decoration: InputDecoration(
-                hintText: 'Email',
-                hintStyle: TextStyle(
+    return SizedBox(
+      height: 50.h,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text(
+                _isLogin ? ' Log in' : ' Sign up',
+                style: TextStyle(
                     color: AppColorTheme.kColorWhiteText,
-                    fontWeight: FontWeight.w500),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: AppColorTheme.kColorNotWhite),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(
-                    color: AppColorTheme.kColorNotWhite,
+                    fontSize: 24.sp,
+                    fontWeight: FontWeight.w600),
+              ),
+              SizedBox(height: 4.h),
+              TextField(
+                controller: _emailController,
+                cursorColor: AppColorTheme.kColorWhiteText,
+                keyboardType: TextInputType.emailAddress,
+                style: TextStyle(
+                    color: AppColorTheme.kColorWhiteText,
+                    fontWeight: FontWeight.w600),
+                decoration: InputDecoration(
+                  hintText: 'Email',
+                  hintStyle: TextStyle(
+                      color: AppColorTheme.kColorWhiteText,
+                      fontWeight: FontWeight.w500),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: AppColorTheme.kColorNotWhite),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(
+                      color: AppColorTheme.kColorNotWhite,
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 2.h),
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              cursorColor: AppColorTheme.kColorWhiteText,
-              style: TextStyle(
-                  color: AppColorTheme.kColorWhiteText,
-                  fontWeight: FontWeight.w600),
-              decoration: InputDecoration(
-                hintText: 'Password',
-                hintStyle: TextStyle(
-                    color: AppColorTheme.kColorWhiteText,
-                    fontWeight: FontWeight.w500),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: AppColorTheme.kColorNotWhite),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: AppColorTheme.kColorNotWhite),
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            PopButton(
-              size: 10.sp,
-              color: AppColorTheme.kColorNotWhite,
-              onPressed: () async {
-                HapticFeedback.vibrate();
-                if (_isLogin) {
-                  await authRepo.signInWithEmailPassword(
-                      email: _emailController.text,
-                      password: _passwordController.text);
-                  authRepo.createAndUploadKeypair(email: _emailController.text);
-                } else {
-                  await authRepo.signUpWithEmailPassword(
-                    email: _emailController.text,
-                    password: _passwordController.text,
-                  );
-                }
-              },
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 33.w),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "continue →",
-                      style: TextStyle(
-                          color: AppColorTheme.kColorNotBlack,
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w400),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
-            TextButton(
-              child: Text(
-                _isLogin ? 'Switch to Sign up' : 'Switch to Sign in',
+              SizedBox(height: 2.h),
+              TextField(
+                controller: _passwordController,
+                obscureText: true,
+                cursorColor: AppColorTheme.kColorWhiteText,
                 style: TextStyle(
                     color: AppColorTheme.kColorWhiteText,
-                    fontSize: 11.sp,
                     fontWeight: FontWeight.w600),
+                decoration: InputDecoration(
+                  hintText: 'Password',
+                  hintStyle: TextStyle(
+                      color: AppColorTheme.kColorWhiteText,
+                      fontWeight: FontWeight.w500),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: AppColorTheme.kColorNotWhite),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(8),
+                    borderSide: BorderSide(color: AppColorTheme.kColorNotWhite),
+                  ),
+                ),
               ),
-              onPressed: () {
-                setState(
-                  () {
-                    _isLogin = !_isLogin;
-                  },
-                );
-              },
-            ),
-          ],
+              const SizedBox(height: 20),
+              PopButton(
+                size: 10.sp,
+                color: AppColorTheme.kColorNotWhite,
+                onPressed: () async {
+                  HapticFeedback.vibrate();
+                  if (_isLogin) {
+                    await authRepo.signInWithEmailPassword(
+                        email: _emailController.text,
+                        password: _passwordController.text);
+                    authRepo.createAndUploadKeypair(
+                        email: _emailController.text);
+                  } else {
+                    await authRepo.signUpWithEmailPassword(
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                    );
+                  }
+                },
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: 12, horizontal: 32.w),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "continue →",
+                        style: TextStyle(
+                            color: AppColorTheme.kColorNotBlack,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextButton(
+                child: Text(
+                  _isLogin ? 'Switch to Sign up' : 'Switch to Sign in',
+                  style: TextStyle(
+                      color: AppColorTheme.kColorWhiteText,
+                      fontSize: 11.sp,
+                      fontWeight: FontWeight.w600),
+                ),
+                onPressed: () {
+                  setState(
+                    () {
+                      _isLogin = !_isLogin;
+                    },
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
